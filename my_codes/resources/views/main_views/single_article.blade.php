@@ -22,6 +22,25 @@
                     <hr>
                     <div>{!! $article->long_description !!}</div><br>
                 </article>
+                <!-- Comments section-->
+                <section class="mb-5">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <!-- Comment form-->
+                            <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
+                            <!-- Single comment-->
+                            @foreach($comments as $comment)
+                                <div class="d-flex">
+                                    <div class="flex-shrink-0"><img class="rounded-circle" style="width: 70px; height: 70px;" src="{{ asset('/images/users_images/user.png') }}" alt="..." /></div>
+                                    <div class="ms-3">
+                                        <div class="fw-bold">{{ $comment->name }}</div>
+                                        {{ $comment->comment }}
+                                    </div>
+                                </div><br>
+                            @endforeach
+                        </div>
+                    </div>
+                </section>
             </div>
             <div class="col-lg-4">
                 <!-- Search widget-->

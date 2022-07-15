@@ -38,6 +38,7 @@ class MainController extends Controller
     public function single_article($article_id) {
         $article = Article::find($article_id);
         $categories = Category::all();
-        return view('main_views.single_article', ['article' => $article, 'categories' => $categories]);
+        $comments = Article::find($article_id)->comments;
+        return view('main_views.single_article', ['article' => $article, 'categories' => $categories, 'comments' => $comments]);
     }
 }
