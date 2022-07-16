@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\Article;
+use App\Comment;
+use App\Http\Requests\AddCommentRequest;
 
 class MainController extends Controller
 {
@@ -40,5 +42,15 @@ class MainController extends Controller
         $categories = Category::all();
         $comments = Article::find($article_id)->comments;
         return view('main_views.single_article', ['article' => $article, 'categories' => $categories, 'comments' => $comments]);
+    }
+
+    public function add_comment(AddCommentRequest $request, $article_id) {
+        Comment::create([
+            'name' => $request->name,
+            'comment' => $request->comment,
+            'article_id' => $article_id
+        ]);
+
+        return redirect()->route('single.article', ['article_id' => $article_id]);
     }
 }

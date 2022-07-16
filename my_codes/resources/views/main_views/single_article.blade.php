@@ -27,7 +27,20 @@
                     <div class="card bg-light">
                         <div class="card-body">
                             <!-- Comment form-->
-                            <form class="mb-4"><textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea></form>
+                            <form action="{{ route('comment.add', ['article_id' => $article->id]) }}" method="POST" class="mb-4">
+                                <h3>افزودن کامنت</h3>
+                                {{ csrf_field() }}
+                                <input type="text" name="name" placeholder="نام شما" class="form-control" value="{{ old('name') }}">
+                                @if($errors->has('name'))
+                                    <span class="text-danger">{{ $errors->first('name') }}</span><br>
+                                @endif
+                                <br>
+                                <textarea name="comment" class="form-control" rows="5" placeholder="متن کامنت شما">{{ old('comment') }}</textarea>
+                                @if($errors->has('comment'))
+                                    <span class="text-danger">{{ $errors->first('comment') }}</span><br>
+                                @endif
+                                <br><input type="submit" value="تایید" class="btn btn-success">
+                            </form>
                             <!-- Single comment-->
                             @foreach($comments as $comment)
                                 <div class="d-flex">

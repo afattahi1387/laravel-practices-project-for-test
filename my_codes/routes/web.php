@@ -27,6 +27,8 @@ Route::put('/edit-category/{category}', 'DashboardController@edit_category')->na
 
 Route::delete('/delete-category/{category}', 'DashboardController@delete_category')->name('category.delete');
 
+Route::post('/add-comment/{article_id}', 'MainController@add_comment')->name('comment.add');
+
 Route::prefix('panel')->group(function() {
     Route::get('/articles', 'DashboardController@articles')->name('dashboard.articles');
 

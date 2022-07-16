@@ -3,7 +3,7 @@
 return [
     'required' => 'فیلد :attribute الزامی است.',
     'image' => 'فیلد :attribute حتما باید با فرمت تصاویر باشد.',
-    
+
     'custom' => [
         'attribute-name' => [
             'rule-name' => 'custom-message',
@@ -25,7 +25,8 @@ return [
         'name' => 'نام',
         'short_description' => 'مقدمه',
         'long_description' => 'بدنه',
-        'image' => 'تصویر'
+        'image' => 'تصویر',
+        'comment' => 'کامنت'
     ],
 
 ];
