@@ -1,2 +1,2 @@
 # laravel-practices-project-for-test
-this is a practices project for test by persian language created by laravel.
+<a href="http://faradars.org" style="text-decoration: none; color: red;">Go to Faradars</a>
