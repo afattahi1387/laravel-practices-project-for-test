@@ -21,6 +21,21 @@
                     <div>{!! $article->short_description !!}</div>
                     <hr>
                     <div>{!! $article->long_description !!}</div><br>
+                    <div>
+                        <b>تعداد رای های «عالی بود»: </b><span>{{ $great_votes }}</span><br><br>
+                        <b>تعداد رای های «بد نبود»: </b><span>{{ $dont_bad_votes }}</span><br><br>
+                        <b>تعداد رای های «اصلا خوب نبود»: </b><span>{{ $bad_votes }}</span>
+                    </div><br>
+                    <a href="{{ route('vote.add.great', ['article_id' => $article->id]) }}" class="btn btn-success">
+                        عالی بود
+                    </a>
+                    <a href="{{ route('vote.add.dontbad', ['article_id' => $article->id]) }}" class="btn btn-warning">
+                        بد نبود
+                    </a>
+                    <a href="{{ route('vote.add.bad', ['article_id' => $article->id]) }}" class="btn btn-danger">
+                        اصلا خوب نبود
+                    </a>
+                    <br><br><br>
                 </article>
                 <!-- Comments section-->
                 <section class="mb-5">
@@ -40,7 +55,7 @@
                                     <span class="text-danger">{{ $errors->first('comment') }}</span><br>
                                 @endif
                                 <br><input type="submit" value="تایید" class="btn btn-success">
-                            </form>
+                            </form><br>
                             <!-- Single comment-->
                             @foreach($comments as $comment)
                                 <div class="d-flex">

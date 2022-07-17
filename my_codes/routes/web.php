@@ -52,3 +52,11 @@ Route::prefix('panel')->group(function() {
 
     Route::put('/update-article/{article}', 'DashboardController@update_article')->name('article.update');
 });
+
+Route::prefix('vote')->group(function() {
+    Route::get('/great/{article_id}', 'VotesController@add_great_vote')->name('vote.add.great');
+
+    Route::get('/dont-bad/{article_id}', 'VotesController@add_dont_bad_vote')->name('vote.add.dontbad');
+
+    Route::get('/bad/{article_id}', 'VotesController@add_bad_vote')->name('vote.add.bad');
+});

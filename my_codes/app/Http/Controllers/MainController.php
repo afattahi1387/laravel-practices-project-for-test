@@ -41,7 +41,17 @@ class MainController extends Controller
         $article = Article::find($article_id);
         $categories = Category::all();
         $comments = Article::find($article_id)->comments;
-        return view('main_views.single_article', ['article' => $article, 'categories' => $categories, 'comments' => $comments]);
+        $great_votes = Article::find($article_id)->votes->where('vote', 'great')->count();
+        $dont_bad_votes = Article::find($article_id)->votes->where('vote', 'dont_bad')->count();
+        $bad_votes = Article::find($article_id)->votes->where('vote', 'bad')->count();
+        return view('main_views.single_article', [
+            'article' => $article,
+            'categories' => $categories,
+            'comments' => $comments,
+            'great_votes' => $great_votes,
+            'dont_bad_votes' => $dont_bad_votes,
+            'bad_votes' => $bad_votes
+        ]);
     }
 
     public function add_comment(AddCommentRequest $request, $article_id) {
