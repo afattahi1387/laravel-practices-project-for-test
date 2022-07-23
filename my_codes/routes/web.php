@@ -13,6 +13,8 @@
 
 Route::get('/', 'MainController@home');
 
+Auth::routes();
+
 Route::get('/search', 'MainController@search');
 
 Route::get('/category/{category_id}', 'MainController@get_category_articles')->name('category.articles');
@@ -60,3 +62,7 @@ Route::prefix('vote')->group(function() {
 
     Route::get('/bad/{article_id}', 'VotesController@add_bad_vote')->name('vote.add.bad');
 });
+
+Route::get('/home', function() {
+    return redirect()->route('dashboard');
+})->middleware('auth');

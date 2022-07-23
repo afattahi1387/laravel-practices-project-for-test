@@ -11,6 +11,10 @@ use App\Http\Requests\UpdateArticleRequest;
 
 class DashboardController extends Controller
 {
+    public function __construct() {
+        $this->middleware('auth');
+    }
+
     public function dashboard()
     {
         $categories = Category::all();

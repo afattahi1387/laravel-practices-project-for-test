@@ -22,6 +22,7 @@ return [
     */
 
     'attributes' => [
+        'email' => 'ایمیل',
         'name' => 'نام',
         'short_description' => 'مقدمه',
         'long_description' => 'بدنه',
